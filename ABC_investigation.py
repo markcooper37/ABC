@@ -1,11 +1,19 @@
-import numpy
+import numpy as np
 
 def C_function(k, r, sigma, C_0, t):
 
-    e = numpy.exp(-r * t)
+    exponent = np.exp(-r * t)
 
-    noise = numpy.random.normal(scale=sigma, size=len(t))
+    noise = np.random.normal(scale=sigma, size=len(t))
 
-    return k / (1 + (-1 + k / C_0))*e + noise
+    return k / (1 + (-1 + (k / C_0))*exponent) + noise
 
-print(C_function(5, 3, 1, 7, numpy.linspace(0, 1, 10)))
+t_size = np.linspace(0, 4, 100)
+
+Results = C_function(150, 3, 2, 1, t_size)
+
+print(Results)
+
+import matplotlib.pyplot as plt
+plt.plot(t_size, Results)
+plt.show()
