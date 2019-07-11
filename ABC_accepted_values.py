@@ -19,9 +19,10 @@ def accepted_values(N, delta):
             r_estimate.append(random[1])
             sigma_estimate.append(random[2])
     print(len(k_estimate) / N)
+    print(np.mean(k_estimate), np.mean(r_estimate), np.mean(sigma_estimate))
     return [k_estimate, r_estimate, sigma_estimate]
 
-value_guesses = accepted_values(100000, 5)
+value_guesses = accepted_values(500000, 5)
 
 print(value_guesses)
 
